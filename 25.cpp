@@ -1,0 +1,133 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    char str1[1001]="1" ;
+    char str2[1001]="1";
+    char str3[1001],res[1001];
+    int l1,l2,l3,l4,carry,i,a,j,c=2,length,r1,r2;
+    while(1){
+    if(length==1000){
+        cout<<c<<endl;
+        return 0;
+    }
+    l1=strlen(str1);
+    l2=strlen(str2);
+    l3=l1-1;
+    l4=l2-1;
+    if(l1>l2){
+        carry=0;
+        i=0;
+        while(1){
+            if(str1[l3]=='\0' && str2[l4]=='\0')
+                break;
+            while(str2[l4]!='\0'){
+                a=(str2[l4]-'0')+(str1[l3]-'0')+carry;
+                if(a>=10){
+                    str3[i++]=((a%10)+'0');
+                    carry=a/10;
+                }
+                else{
+                    str3[i++]=((a%10)+'0');
+                    carry=0;
+                }
+                l3--;
+                l4--;
+            }
+            while(str1[l3]!='\0'){
+                a=0+(str1[l3]-'0')+carry;
+                if(a>=10){
+                    str3[i++]=((a%10)+'0');
+                    carry=a/10;
+                }
+                else{
+                    str3[i++]=((a%10)+'0');
+                    carry=0;
+                }
+                l3--;
+                l4--;
+            }
+            if(carry!=0)
+                str3[i++]=(carry+'0');
+            str3[i]='\0';
+        }
+    }
+    else if(l1<l2){
+        carry=0;
+        i=0;
+        while(1){
+            if(str1[l3]=='\0' && str2[l4]=='\0')
+                break;
+            while(str1[l3]!='\0'){
+                a=(str1[l3]-'0')+(str2[l4]-'0')+carry;
+                if(a>=10){
+                    str3[i++]=((a%10)+'0');
+                    carry=a/10;
+                }
+                else{
+                    str3[i++]=((a%10)+'0');
+                    carry=0;
+                }
+                l3--;
+                l4--;
+            }
+            while(str2[l4]!='\0'){
+                a=0+(str2[l4]-'0')+carry;
+                if(a>=10){
+                    str3[i++]=((a%10)+'0');
+                    carry=a/10;
+                }
+                else{
+                    str3[i++]=((a%10)+'0');
+                    carry=0;
+                }
+                l3--;
+                l4--;
+            }
+            if(carry!=0)
+                str3[i++]=(carry+'0');
+            str3[i]='\0';
+        }
+    }
+    else{
+        carry=0;
+        i=0;
+        while(1){
+            if(str1[l3]=='\0' || str2[l4]=='\0')
+                break;
+            while(str2[l4]!='\0'){
+                a=(str2[l4]-'0')+(str1[l3]-'0')+carry;
+                if(a>=10){
+                    str3[i++]=((a%10)+'0');
+                    carry=a/10;
+                }
+                else{
+                    str3[i++]=((a%10)+'0');
+                    carry=0;
+                }
+                l3--;
+                l4--;
+            }
+            if(carry!=0)
+                str3[i++]=(carry+'0');
+            str3[i]='\0';
+        }
+    }
+    i=strlen(str3)-1;
+    j=0;
+    while(str3[i]!='\0')
+        res[j++]=str3[i--];
+    res[j]='\0';
+    c++;
+    r1=0;r2=0;
+    while(str2[r2]!='\0')
+        str1[r1++]=str2[r2++];
+    str1[r1]='\0';
+    r1=0;r2=0;
+    while(res[r2]!='\0')
+        str2[r1++]=res[r2++];
+    str2[r1]='\0';
+    length=strlen(res);
+}
+  return 0;
+}
+//ANSWER:4782
