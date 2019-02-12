@@ -1,0 +1,88 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    char res1[1000]="2";
+    vector<string>st;
+    int ab=2,c=0;
+    int res3,carry=0,j;
+    char res[1000];
+    long long sum=0;
+    for(int i=2;i<=100;i++){
+        int k=strlen(res1)-1;
+        int j=0;
+        while(k>=0){
+            res3=(res1[k]-'0')*ab+carry;
+            if(res3>=10 && k==0){
+                res[ j++ ]=(res3%10)+'0';
+                carry=res3/10;
+                while(carry>0){
+                    res[j++]=(carry%10)+'0';
+                    carry/=10;
+                }
+            }
+            else{
+                res[j++]=(res3%10)+'0';
+                carry=res3/10;
+            }
+            k--;
+        }
+        res[j]='\0';
+        int g=strlen(res)-1;
+        int p=0;
+        while(res[g]!='\0'){
+            res1[p++]=res[g];
+            g--;
+        }
+        st.push_back(res1);
+        c++;
+    }
+    for(int q=3;q<=100;q++){
+     res1[1000];
+     ab=q;
+     carry=0;
+     res[1000];
+     snprintf(res1,100,"%d",q);
+    for(int i=2;i<=100;i++){
+
+        int k=strlen(res1)-1;
+        int j=0;
+        while(k>=0){
+            res3=(res1[k]-'0')*ab+carry;
+            if(res3>=10 && k==0){
+                res[j++]=(res3%10)+'0';
+                carry=res3/10;
+                while(carry>0){
+                    res[j++]=(carry%10)+'0';
+                    carry/=10;
+                }
+            }
+            else{
+                res[j++]=(res3%10)+'0';
+                carry=res3/10;
+            }
+            k--;
+        }
+        res[j]='\0';
+        int g=strlen(res)-1;
+        int p=0;
+        while(g>=0){
+            res1[p++]=res[g];
+            g--;
+        }
+        res1[p]='\0';
+    int z=1;
+    for(int i=0;i<st.size();i++){
+        if(st[i]==res1){
+            z=0;
+            break;
+        }
+    }
+    if(z==1){
+        c++;
+        st.push_back(res1);
+    }
+    }
+    }
+    cout<<c<<endl;
+    return 0;
+}
